@@ -1,0 +1,4 @@
+# Setting up the SSH client for password-less server connection.
+Host ubuntu
+   IdentitFile ~/.ssh/school
+   PasswordAuthentication no
