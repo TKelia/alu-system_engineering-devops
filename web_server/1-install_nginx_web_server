@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Configures Nginx to:
+#+    Listen on port 80.
+#+    Serve a page with "Holberton School" when accessed
+#++    at the root URL using a curl GET request.
+
+apt-get update -y
+apt-get install -y nginx
+
+mkdir -p /etc/nginx/html
+echo "Holberton School" > /etc/nginx/html/index.html
+
+cat > /etc/nginx/sites-available/default <<EOL
+server {
+     listen 80 default_server;
+     listen [::]:80 default_server;
+     root /etc/nginx/html;
+     index index.html index.htm;
+}
+EOL
+
+systemctl restart nginx
