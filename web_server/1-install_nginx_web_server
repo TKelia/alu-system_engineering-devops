@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-# Refresh package information
-sudo apt-get update
+# Update package list
+sudo apt update
 
 # Install Nginx
-sudo apt-get install -y nginx
+sudo apt install -y nginx
 
-# Start the Nginx service
+# Start Nginx
 sudo service nginx start
 
-# Ensure Nginx starts automatically on system boot
+# Enable Nginx to start on boot
 sudo systemctl enable nginx
 
-# Set up a custom HTML file
+# Create a custom HTML page
 echo "Holberton School for the win!" | sudo tee /var/www/html/index.html
 
-# Reload Nginx to apply changes
+# Restart Nginx without using systemctl
 sudo service nginx restart
 
-# Permit HTTP traffic through the firewall (if UFW is in use)
+# Allow HTTP traffic through the firewall (if UFW is enabled)
 sudo ufw allow 'Nginx Full'
